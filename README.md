@@ -50,7 +50,7 @@ Note: LLM Gateway is a paid feature, so you'll need to add a card to your accoun
 
 ## Running the Demo
 
-### Option 1: Comparison Mode with Audio File (Recommended)
+### ⭐ Option 1: Comparison Mode with Audio File (Recommended)
 
 This is the best way to evaluate the impact of keyterm boosting. Provide an audio file containing words from the `previous_conversations.json` database (names, places, medications). The script runs the same audio twice:
 1. First **without** keyterm boosting (baseline)
@@ -110,7 +110,7 @@ This demo focuses solely on **Speech-to-Text with keyterm boosting**. It does no
 - Voice agent / conversational AI responses
 - Text-to-Speech output
 
-**To extend this to a full voice agent, see [`EXTENDING_TO_VOICE_AGENT.md`](demo/EXTENDING_TO_VOICE_AGENT.md) for detailed instructions on using LLM Gateway to maintain agent response history alongside transcription context.**
+**⭐ To extend this to a full voice agent, see [`EXTENDING_TO_VOICE_AGENT.md`](demo/EXTENDING_TO_VOICE_AGENT.md) for detailed instructions on using LLM Gateway to maintain agent response history alongside transcription context.**
 
 ## How It Works Under the Hood
 
@@ -133,7 +133,7 @@ demo/
 
 ## Customization
 
-- **Change configuration**: Edit `config.py` to adjust sample rate, speech model, LLM model, and [streaming parameters](https://www.assemblyai.com/docs/api-reference/streaming-api/streaming-api#request.query)
+- ⭐ **Change configuration**: Edit `config.py` to adjust sample rate, speech model, LLM model, and [streaming parameters](https://www.assemblyai.com/docs/api-reference/streaming-api/streaming-api#request.query)
 - **Change the conversation history**: Edit `previous_conversations.json` or replace the `load_previous_conversations()` function in `keyterms.py` with your own database call
 - **Modify keyterm extraction**: Adjust the LLM prompt in `keyterms.py` for your domain
 - **Adjust refresh frequency**: Change `KEYTERM_REFRESH_THRESHOLD` in `config.py` (default: 50 words)
