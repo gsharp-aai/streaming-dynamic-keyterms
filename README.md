@@ -32,8 +32,6 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install "assemblyai[extras]" python-dotenv requests
 ```
 
-Note: The `[extras]` includes `pyaudio` for microphone streaming. If you only plan to use file-based testing, you can install without extras: `pip install assemblyai python-dotenv requests`
-
 ### 2. Set Your API Key
 
 Create a `.env` file in the project root:
@@ -42,11 +40,13 @@ Create a `.env` file in the project root:
 cp .env.example .env
 ```
 
-Then edit `.env` and add your AssemblyAI API key:
+Then edit `.env` and add your AssemblyAI API key (found on the [API Keys page](https://www.assemblyai.com/dashboard/api-keys)):
 
 ```
 ASSEMBLYAI_API_KEY=your_api_key_here
 ```
+
+Note: LLM Gateway is a paid feature, so you'll need to add a card to your account (your free credits will still apply).
 
 ## Running the Demo
 
@@ -90,13 +90,8 @@ SESSION 2 (WITH BOOSTING):
 
 **Audio file requirements:**
 - Format: WAV (16-bit PCM)
-- Sample rate: 16kHz (or specify with `--sample-rate`)
+- Sample rate: 16kHz (or specify with `--sample-rate` and change `SAMPLE_RATE` in `config.py`)
 - Channels: Mono
-
-To convert other formats:
-```bash
-ffmpeg -i input.m4a -ar 16000 -ac 1 output.wav
-```
 
 ### Option 2: Live Microphone Streaming
 
@@ -107,7 +102,7 @@ cd demo
 python main.py
 ```
 
-Speak naturally and watch how the transcription handles difficult names and terms.
+Speak naturally and watch how the transcription handles difficult names and terms. After 50 words, keyterms will dynamically refresh based on conversation content. You can customize endpointing behavior and other streaming parameters in `config.py` (see [API reference](https://www.assemblyai.com/docs/api-reference/streaming-api/streaming-api#request.query) and [turn detection configurations](https://www.assemblyai.com/docs/universal-streaming/turn-detection#quick-start-configurations)).
 
 ## What This Demo Does NOT Include
 
@@ -138,7 +133,7 @@ demo/
 
 ## Customization
 
-- **Change configuration**: Edit `config.py` to adjust sample rate, speech model, LLM model, etc.
+- **Change configuration**: Edit `config.py` to adjust sample rate, speech model, LLM model, and [streaming parameters](https://www.assemblyai.com/docs/api-reference/streaming-api/streaming-api#request.query)
 - **Change the conversation history**: Edit `previous_conversations.json` or replace the `load_previous_conversations()` function in `keyterms.py` with your own database call
 - **Modify keyterm extraction**: Adjust the LLM prompt in `keyterms.py` for your domain
 - **Adjust refresh frequency**: Change `KEYTERM_REFRESH_THRESHOLD` in `config.py` (default: 50 words)
