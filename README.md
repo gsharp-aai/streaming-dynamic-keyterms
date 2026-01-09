@@ -63,40 +63,40 @@ cd demo
 python main.py ../files/test_file.wav
 ```
 
-**Demo output:**
+**Demo output (with brackets for readability):**
 
 ```
 ============================================================
 GROUND TRUTH:
 ============================================================
-  Hi, this is Kelly Byrne-Donoghue and I'm calling just to confirm
-  my appointment with Dr. Oluwatoyin Adéwálé at the Schuylkill
+  Hi, this is [Kelly Byrne-Donoghue] and I'm calling just to confirm
+  my appointment with Dr. [Oluwatoyin Adéwálé] at the [Schuylkill]
   Family Health Center. I also need to reschedule my physical
-  therapy with Dr. Xiomara at Ouachita Rehabilitation Center.
-  My sister Leigh Rhys-Davies is picking up my Atorvastatin and
-  Farxiga prescriptions from the Wilkes-Barre CVS pharmacy.
+  therapy with Dr. [Xiomara] at [Ouachita] Rehabilitation Center.
+  My sister [Leigh Rhys-Davies] is picking up my [Atorvastatin] and
+  [Farxiga] prescriptions from the [Wilkes-Barre] CVS pharmacy.
 
 ============================================================
 SESSION 1 (NO BOOSTING):
 ============================================================
-  Turn 1: Hi, this is Kelly Byrne Donahue, and I'm calling just to
-          confirm my appointment with Dr. Oluatoyan Adewale at the
-          Schuylkill Family Health Center.
+  Turn 1: Hi, this is [Kelly Byrne Donahue], and I'm calling just to
+          confirm my appointment with Dr. [Oluatoyan Adewale] at the
+          [Schuylkill] Family Health Center.
   Turn 2: I also need to reschedule my physical therapy with
-          Dr. Ziomara at the Wichita Rehabilitation Center.
-  Turn 3: My sister, Lee Re Davies is picking up my autor bastatin
-          and farzika prescriptions from the Wilkes Bear CBS pharmacy.
+          Dr. [Ziomara] at the [Wichita] Rehabilitation Center.
+  Turn 3: My sister, [Lee Re Davies] is picking up my [autor bastatin]
+          and [farzika] prescriptions from the [Wilkes Bear] CBS pharmacy.
 
 ============================================================
 SESSION 2 (WITH BOOSTING):
 ============================================================
-  Turn 1: Hi, this is Kelly Byrne-Donahue, and I'm calling just to
-          confirm my appointment with Dr. Oluwatoyin Adéwálé at the
-          Schuylkill Family Health Center.
+  Turn 1: Hi, this is [Kelly Byrne-Donahue], and I'm calling just to
+          confirm my appointment with Dr. [Oluwatoyin Adéwálé] at the
+          [Schuylkill] Family Health Center.
   Turn 2: I also need to reschedule my physical therapy with
-          Dr. Xiomara at the Ouachita Rehabilitation Center.
-  Turn 3: My sister, Leigh Rhys-Davies is picking up my Atorvastatin
-          and Farxiga prescriptions from the Wilkes-Barre CVS pharmacy.
+          Dr. [Xiomara] at the [Ouachita] Rehabilitation Center.
+  Turn 3: My sister, [Leigh Rhys-Davies] is picking up my [Atorvastatin]
+          and [Farxiga] prescriptions from the [Wilkes-Barre] CVS pharmacy.
 ```
 
 **Audio file requirements:**
