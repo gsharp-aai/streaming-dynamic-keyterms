@@ -21,6 +21,7 @@ import wave
 from typing import Type
 
 import assemblyai as aai
+import pyaudio
 from assemblyai.streaming.v3 import (
     BeginEvent,
     StreamingClient,
@@ -265,13 +266,14 @@ def on_terminated_no_boost(client: Type[StreamingClient], event: TerminationEven
 # FILE STREAMING
 # ============================================================================
 
-def stream_file(filepath: str, sample_rate: int):
+def stream_file(filepath: str, sample_rate: int, play_audio: bool = True):
     """
     Stream audio file in chunks to simulate real-time audio.
 
     Args:
         filepath: Absolute path to a WAV file
         sample_rate: Expected sample rate for the streaming connection
+        play_audio: Whether to play audio through speakers while streaming
 
     Yields:
         Audio frames in chunks
@@ -288,12 +290,36 @@ def stream_file(filepath: str, sample_rate: int):
 
         frames_per_chunk = int(file_sample_rate * chunk_duration)
 
-        while True:
-            frames = wav_file.readframes(frames_per_chunk)
-            if not frames:
-                break
-            yield frames
-            time.sleep(chunk_duration)
+        # Set up audio playback if enabled
+        p = None
+        stream = None
+        if play_audio:
+            p = pyaudio.PyAudio()
+            stream = p.open(
+                format=p.get_format_from_width(wav_file.getsampwidth()),
+                channels=wav_file.getnchannels(),
+                rate=file_sample_rate,
+                output=True
+            )
+
+        try:
+            while True:
+                frames = wav_file.readframes(frames_per_chunk)
+                if not frames:
+                    break
+                if play_audio and stream:
+                    # stream.write() is blocking and provides timing
+                    stream.write(frames)
+                else:
+                    # Only sleep if not playing audio (to simulate real-time)
+                    time.sleep(chunk_duration)
+                yield frames
+        finally:
+            if stream:
+                stream.stop_stream()
+                stream.close()
+            if p:
+                p.terminate()
 
 
 # ============================================================================
